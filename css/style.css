@@ -1,4 +1,16 @@
 @import url(css/reset.css);
+* {
+    box-sizing: border-box;
+}
+a{
+    display: block;
+    text-decoration: none;
+    color: rgb(255,255,255);
+}
+i{
+    font-size: 2rem;
+    color: rgb(255,255,255);
+}
 
 /* Main Container */
 .main-container{
@@ -10,28 +22,98 @@
 .header-container{
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border: 0.1rem solid rgb(229,9,20) ;
 }
-.logo-area{
-
+.logo-area h1{
+    font-family:'Bebas Neue', sans-serif;
+    letter-spacing: 0.5rem;
+    font-size: 3rem;
+    color:rgb(229,9,20);
 }
 .title-area{
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap:2rem;
 }
 
 .personal-area{
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap:2rem;
 }
 
+  /* Style the search field */
+form.search-area input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    float: left;
+    width: 80%;
+    background: rgb(255,255,255);;
+    border-radius: 0.4rem 0 0 0.4rem ;
+}
+
+  /* Style the submit button */
+form.search-area button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: rgb(229,9,20);
+    font-size: 17px;
+    border-left: none;
+    cursor: pointer;
+    border-radius:0 0.4rem 0.4rem 0;
+}
+
+form.search-area button:hover {
+    background: rgb(229,9,20,0.1);
+}
+
+  /* Clear floats */
+form.search-area::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
+/* Headline Container*/
 .headline-container{
     display: flex;
     flex-direction: column;
-    
+    background-image: url(https://images.alphacoders.com/125/1254595.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    align-items: flex-start;
+    font-family:'Bebas Neue', sans-serif;
+}
+.headline-container h2 {
+    font-size: 4rem;
 }
 .rating-warning-duration-area{
     display: flex;
     flex-direction: row;
+}
+.rating{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:0.5rem;
+}
+.stars i{
+    font-size: 1rem;
+    color:rgb(229,9,20);
+}
+.rate {
+    font-size: 1rem;
+}
+.imdb i{
+    color:rgb(229,9,20);
 }
 .description p{
 
@@ -65,11 +147,14 @@
 .gallery-container{
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
+    background-color: red;
     
 }
 .popular-movies{
     display: flex;
     flex-direction: row;
+    background-color: pink;
 }
 .movie{
     display: flex;
@@ -80,10 +165,17 @@
     flex-direction: row;
 }
 
+.recomended-movies{
+    display: flex;
+    flex-direction: row;
+    background-color: lightcoral;
+}
+
 /* Footer Container */
 .footer-container{
     display: flex;
     flex-direction: row;
+    background-color: aqua;
 }
 
 .text-links-area{
