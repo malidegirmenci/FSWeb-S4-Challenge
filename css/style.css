@@ -1,0 +1,33 @@
+@import url(css/reset.css);
+
+
+.main-container{
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+
+}
+
+.header-container{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.headline-container{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.gallery-container{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.footer-container{
+    display: flex;
+    flex-direction: column;
+    
+}
