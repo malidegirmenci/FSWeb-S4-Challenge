@@ -1,17 +1,27 @@
 @import url(css/reset.css);
 
-
+/* Main Container */
 .main-container{
     display: flex;
     flex-direction: column;
     background-color: black;
-
 }
-
+/* Header Container */
 .header-container{
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: row;
+}
+.logo-area{
+
+}
+.title-area{
+    display: flex;
+    flex-direction: row;
+}
+
+.personal-area{
+    display: flex;
+    flex-direction: row;
 }
 
 .headline-container{
@@ -19,15 +29,85 @@
     flex-direction: column;
     
 }
+.rating-warning-duration-area{
+    display: flex;
+    flex-direction: row;
+}
+.description p{
 
+}
+
+.info-tags{
+    display: flex;
+    flex-direction: column;
+}
+.starring {
+    display: flex;
+    flex-direction: row;
+}
+
+.genre {
+    display: flex;
+    flex-direction: row;
+}
+
+.tags {
+    display: flex;
+    flex-direction: row;
+}
+
+.play-button {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Gallery Container */
 .gallery-container{
     display: flex;
     flex-direction: column;
     
 }
-
-.footer-container{
+.popular-movies{
+    display: flex;
+    flex-direction: row;
+}
+.movie{
     display: flex;
     flex-direction: column;
-    
+}
+.warning-duration-area{
+    display: flex;
+    flex-direction: row;
+}
+
+/* Footer Container */
+.footer-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.text-links-area{
+    display: flex;
+    flex-direction: column;
+}
+
+.links{
+    display: flex;
+    flex-direction: row;
+}
+.follow-us-area{
+    display: flex;
+    flex-direction: column;
+}
+.social-buttons{
+    display: flex;
+    flex-direction: row;
+}
+.apps-area{
+    display: flex;
+    flex-direction: column;
+}
+.platform-buttons{
+    display: flex;
+    flex-direction: row;
 }
