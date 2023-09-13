@@ -277,7 +277,7 @@ form.search-area::after {
     display: flex;
     flex-direction: column;
     gap:0.3rem;
-    width: 30%;
+    width: 25%;
     height: 15rem;
 }
 .movie{
@@ -305,7 +305,7 @@ form.search-area::after {
     -webkit-text-stroke: 0.1px rgb(235, 229, 229);
     color:rgb(20, 20, 20);
 }
-.movie-column .warning-duration-area {
+.movie-column .genre-warning-duration-area {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -314,7 +314,7 @@ form.search-area::after {
     gap:0.5rem;
     -webkit-text-stroke: 0.1px rgb(255, 255, 255);
 }
-.movie-column .warning-duration-area p{
+.movie-column .genre-warning-duration-area p{
     margin:0;
     margin-right:5px;
     font-size: 0.75rem;
@@ -329,7 +329,6 @@ form.search-area::after {
     height: 2rem;
     display: flex;
     justify-content: center;
-    
 }
 .movie .play-button-area i,
 .movie .play-button-area a{
@@ -353,6 +352,13 @@ form.search-area::after {
 }
 .TwoPopes{
     background-image: url(../img/TwoPopes.jpg);
+}
+.StarWars{
+    background-image: url(../img/StarWars.jpg);
+}
+.POTC{
+    background-image: url(../img/POTC.jpg);
+
 }
 .recomended-movies{
     display: flex;
