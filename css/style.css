@@ -2,14 +2,20 @@
 * {
     box-sizing: border-box;
 }
+html{
+    background-color: black;
+}
 body{
     margin:0;
     padding: 0;
 }
+
 section{
     margin-bottom: 1rem;
 }
+
 a{
+    font-family: 'Poppins', sans-serif;
     display: block;
     text-decoration: none;
     color: rgb(255,255,255);
@@ -19,19 +25,17 @@ i{
     color: rgb(255,255,255);
 }
 h5 {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 1rem;
     color:rgb(229,9,20);
     text-align: right;
 }
 p {
     font-size: 1rem;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Poppins', sans-serif;
     color:rgb(221, 221, 221);
 }
-h2 a {
-    font-size: 1.3rem;
-}
+
 /* Main Container */
 .main-container{
     display: flex;
@@ -44,6 +48,7 @@ h2 a {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    text-align: center;
     /*border: 0.1rem solid rgb(229,9,20) ;*/
 }
 .logo-area h1{
@@ -51,13 +56,25 @@ h2 a {
     letter-spacing: 0.5rem;
     font-size: 3rem;
     color:rgb(229,9,20);
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 1;
+    text-transform: none;
+    transform: translateZ(100);
 }
+
 .title-area{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap:2rem;
+}
+
+.title-area h2, 
+.title-area a {
+    margin:0;
 }
 
 .personal-area{
@@ -113,9 +130,10 @@ form.search-area::after {
     font-family:'Bebas Neue', sans-serif;
     padding-left: 5rem;
 }
-.headline-container h2 {
+.headline-container .title-area h2 {
     font-size: 4rem;
     color:rgb(229,9,20);
+    margin:0;
 }
 .rating-warning-duration-area{
     display: flex;
@@ -151,7 +169,7 @@ form.search-area::after {
 .description p{
     display: inline;
     text-wrap: wrap;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 500;
 }
 
@@ -197,68 +215,183 @@ form.search-area::after {
 .play-button-area{
     margin-top: 3rem;
     margin-bottom:3rem;
-    width : 15%;
+    width : 15rem;
     height: 3rem;
     display: flex;
     flex-direction: row;
     background-color: rgb(229,9,20);
-    border-radius: 15px;
+    border-radius: 10px;
     text-align: center;
     align-items: center;
     justify-content: space-around;
 }
 .play-button-area i {
-    color:rgb(221, 221, 221);
+    color:rgb(255, 255, 255);
 }
 .play-button{
     background-color: rgb(229,9,20);
     border:0;
     font-size: 1.5rem;
-    color:rgb(221, 221, 221);
+    color:rgb(255, 255, 255);
 }
 /* Gallery Container */
 .gallery-container{
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    background-color: red;
-    
+}
+.gallery-container p,
+.gallery-container h2,
+.gallery-container h3,
+.gallery-container h4{
+    font-family: 'Poppins', sans-serif;
 }
 .popular-movies{
     display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+.title-area{
+    display: flex;
     flex-direction: row;
-    background-color: pink;
+    justify-content: space-between;
+}
+
+.gallery-container .title-area h2,
+.gallery-container .title-area a{
+    font-size: 1rem;
+    color:rgb(221, 221, 221);
+    margin:0 1rem;
+    margin-top:1rem;
+}
+
+.movie-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin:1rem 1rem;
+    flex-wrap: wrap;
+}
+.movie-column{
+    display: flex;
+    flex-direction: column;
+    gap:0.3rem;
+    width: 30%;
+    height: 15rem;
 }
 .movie{
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    text-align: left;
+    border:2px solid rgb(26, 26, 26);
+    border-radius: 10px;
+    margin-left: 1rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    flex-grow: 1;
 }
-.warning-duration-area{
+.movie-column h3{
+    font-size: 1.5rem;
+    /*-webkit-text-stroke: 0.4px rgb(235, 229, 229);*/
+    color:rgb(252, 252, 252);
+    margin-bottom: 0;
+    margin-top: 0;
+    margin-left: 2rem;
+}
+.movie p {
+    -webkit-text-stroke: 0.1px rgb(235, 229, 229);
+    color:rgb(20, 20, 20);
+}
+.movie-column .warning-duration-area {
     display: flex;
     flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    gap:0.5rem;
+    -webkit-text-stroke: 0.1px rgb(255, 255, 255);
 }
-
+.movie-column .warning-duration-area p{
+    margin:0;
+    margin-right:5px;
+    font-size: 0.75rem;
+}.space{
+    margin-bottom: 1rem;
+}
+.movie .play-button-area{
+    margin-left:1rem;
+    margin-top: 0;
+    margin-bottom :1.5rem;
+    width:8rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    
+}
+.movie .play-button-area i,
+.movie .play-button-area a{
+    font-size: 1rem;
+    
+}
+.HP{
+    background-image: url(../img/HP.jpg);
+}
+.LOTR{
+    background-image: url(../img/LOTR.jpg);
+}
+.SpritedAway{
+    background-image: url(../img/SpritedAway.jpeg);
+}
+.AileArasinda{
+    background-image: url(../img/AileArasinda.png);
+}
+.Godfather{
+    background-image: url(../img/Godfather.webp);
+}
+.TwoPopes{
+    background-image: url(../img/TwoPopes.jpg);
+}
 .recomended-movies{
     display: flex;
+    flex-direction: column;
+}
+.recomended-movies .title-area{
+    display: flex;
     flex-direction: row;
-    background-color: lightcoral;
+    justify-content: space-between;
 }
 
 /* Footer Container */
 .footer-container{
     display: flex;
     flex-direction: row;
-    background-color: aqua;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin:0 1rem;
+
+}
+.footer-container h4,
+.footer-container p {
+    color:rgb(221, 221, 221);
+    font-family: 'Poppins', sans-serif;
 }
 
+.footer-container p{
+    width: 100%;
+}
 .text-links-area{
     display: flex;
     flex-direction: column;
+    width:50%;
 }
 
 .links{
     display: flex;
     flex-direction: row;
+    gap:2rem;
 }
 .follow-us-area{
     display: flex;
@@ -267,12 +400,19 @@ form.search-area::after {
 .social-buttons{
     display: flex;
     flex-direction: row;
+    gap:1rem;
 }
 .apps-area{
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
 }
 .platform-buttons{
     display: flex;
     flex-direction: row;
+    gap:1rem;
+}
+
+.platform-buttons img {
+    width:7rem;
 }
