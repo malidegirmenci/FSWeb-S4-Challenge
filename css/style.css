@@ -295,7 +295,6 @@ form.search-area::after {
 }
 .movie-column h3{
     font-size: 1.5rem;
-    /*-webkit-text-stroke: 0.4px rgb(235, 229, 229);*/
     color:rgb(252, 252, 252);
     margin-bottom: 0;
     margin-top: 0;
@@ -359,15 +358,6 @@ form.search-area::after {
 .POTC{
     background-image: url(../img/POTC.jpg);
 
-}
-.recomended-movies{
-    display: flex;
-    flex-direction: column;
-}
-.recomended-movies .title-area{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
 }
 
 /* Footer Container */
