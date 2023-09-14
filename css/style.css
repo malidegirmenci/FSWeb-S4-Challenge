@@ -9,7 +9,10 @@ body{
     margin:0;
     padding: 0;
 }
-
+video{
+    width:100%;
+    
+}
 section{
     margin-bottom: 1rem;
 }
@@ -36,20 +39,36 @@ p {
     color:rgb(221, 221, 221);
 }
 
-/* Main Container */
-.main-container{
+
+/* Container */
+.container{
     display: flex;
     flex-direction: column;
     background-color: black;
 }
+/*Video Container */
+.video-container {
+    position: relative;
+}
+.video-container {
+    width: 100vw;
+    height: 50vw;
+}
 /* Header Container */
+.overlay {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 10%;
+}
+
 .header-container{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     text-align: center;
-    /*border: 0.1rem solid rgb(229,9,20) ;*/
 }
 .logo-area h1{
     font-family:'Bebas Neue', sans-serif;
@@ -75,6 +94,7 @@ p {
 .title-area h2, 
 .title-area a {
     margin:0;
+    font-size: 1rem;
 }
 
 .personal-area{
@@ -84,46 +104,57 @@ p {
     align-items: center;
     gap:2rem;
 }
-
-  /* Style the search field */
-form.search-area input[type=text] {
-    padding: 10px;
-    font-size: 17px;
-    float: left;
-    width: 80%;
-    background: rgb(255,255,255);;
-    border-radius: 0.4rem 0 0 0.4rem ;
+.search{
+    display:inline-flex;
+    align-items: center;
+    background-image: #c22957;
+    color:#fff;
+    padding:10px;
+    border-radius: 4px;
+    border:1px solid #fff;
 }
-
-  /* Style the submit button */
-form.search-area button {
-    float: left;
-    width: 20%;
-    padding: 10px;
-    background: rgb(229,9,20);
-    font-size: 17px;
-    border-left: none;
-    cursor: pointer;
-    border-radius:0 0.4rem 0.4rem 0;
+.search :is(input,button){
+    background: transparent;
+    color:inherit;
+    border:none;
+    outline:none;
 }
-
-form.search-area button:hover {
-    background: rgb(229,9,20,0.1);
+.searchInput{
+    width:0;
+    transition: width 0.5s;
 }
-
-  /* Clear floats */
-form.search-area::after {
-    content: "";
-    clear: both;
-    display: table;
+.searchButton{
+    display: grid;
+    place-items: center;
+    width: 25px;
+    height: 25px;
+    cursor:pointer;
+    transition: color 0.25s;
 }
-
+.searchButton:hover{
+    color:#e3e3e3;
+}
+.search:focus-within input{
+    width:200px;
+}
+::placeholder {
+    font:inherit;
+    color:#e3e3e3;
+}
 
 /* Headline Container*/
+.overlay-headline {
+    position: absolute;
+    top: 200px;
+    left: 0;
+    width: 100%;
+    height: 60%;
+}
+
 .headline-container{
     display: flex;
     flex-direction: column;
-    background-image: url(https://images.alphacoders.com/125/1254595.jpg);
+    /*background-image: url(https://images.alphacoders.com/125/1254595.jpg);*/
     background-size: cover;
     background-repeat: no-repeat;
     align-items: flex-start;
@@ -235,6 +266,48 @@ form.search-area::after {
     color:rgb(255, 255, 255);
 }
 /* Gallery Container */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+}
+.slideshow-container{
+    width: 100%;
+}
+.mySlides {
+    display: none;
+}
+.slideshow-container {
+    max-width: 100%;
+    position: relative;
+    margin: auto;
+}
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
 .gallery-container{
     display: flex;
     flex-direction: column;
@@ -318,7 +391,7 @@ form.search-area::after {
     margin-right:5px;
     font-size: 0.75rem;
 }.space{
-    margin-bottom: 1rem;
+    margin-top: 2rem;
 }
 .movie .play-button-area{
     margin-left:1rem;
@@ -334,6 +407,8 @@ form.search-area::after {
     font-size: 1rem;
     
 }
+
+/*img backgrounds*/
 .HP{
     background-image: url(../img/HP.jpg);
 }
@@ -357,7 +432,6 @@ form.search-area::after {
 }
 .POTC{
     background-image: url(../img/POTC.jpg);
-
 }
 
 /* Footer Container */

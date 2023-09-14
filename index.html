@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,37 +8,80 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/379336a8ba.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins&display=swap" rel="stylesheet">
-    <title>METFLIX</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins&display=swap" rel="stylesheet">
+
+    <script>
+        const video = document.getElementById('myVideo');
+        document.addEventListener('DOMContentLoaded', function () {
+            showDivs(1, 0);
+            showDivs(1, 1);
+            video.play().catch(function(error) {
+        // Otomatik oynatma başarısızsa, kullanıcı etkileşimi gerektirebilir.
+        // Bu nedenle, kullanıcıya bir düğme eklemek iyi bir fikir olabilir.
+        console.error('Video otomatik oynatma hatası:', error);
+            });
+        });
+        var slideIndex = [1, 1];
+        var slideId = ["mySlides1", "mySlides2"]
+        function plusDivs(n, no) {
+            showDivs(slideIndex[no] += n, no);
+        }
+        function showDivs(n, no) {
+            var i;
+            var x = document.getElementsByClassName(slideId[no]);
+            if (n > x.length) { slideIndex[no] = 1 }
+            if (n < 1) { slideIndex[no] = x.length }
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            x[slideIndex[no] - 1].style.display = "block";
+        }
+
+    </script>
+    <title>WITFLIX</title>
 </head>
+
 <body>
-     <section class="main-container">
-        <header class="header-container"> 
-            <div class="logo-area">
-                <a href="index.html"><h1>METFLIX</h1></a>
-            </div>
-            <nav class="title-area">
-                <h2><a href="index.html">Ana Sayfa</a></h2>
-                <h2><a href="#">Diziler</a></h2>
-                <h2><a href="#">Filmler</a></h2>
-                <h2><a href="#">Listem</a></h2>
-            </nav>
-            <div class="personal-area">
-                <form class="search-area" action="index.html">
-                    <input type="text" placeholder="Search.." name="search">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
-                <div class="notification">
-                    <a href="#"><i class="fa-solid fa-bell"></i></a>
+    <section class="container">
+        <div class="video-container">
+            <video autoplay id="myVideo" preload="auto" loop>
+                <source src="./img/PeakyBlinders.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <header class="overlay header-container">
+                <div class="logo-area">
+                    <a href="index.html">
+                        <h1>WITFLIX</h1>
+                    </a>
                 </div>
-                <div class="profile-photo">
-                    <a href="#"><i class="fa-solid fa-user"></i></a>
+                <nav class="title-area">
+                    <h2><a href="index.html">Ana Sayfa</a></h2>
+                    <h2><a href="#">Diziler</a></h2>
+                    <h2><a href="#">Filmler</a></h2>
+                    <h2><a href="#">Listem</a></h2>
+                </nav>
+                <div class="personal-area">
+                    <!--<form class="search-area" action="index.html">
+                        <input type="text" placeholder="Search.." name="search">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>-->
+                    
+                    <form class="search"> 
+                        <input type="text" placeholder="Search" class="searchInput">
+                        <button type="button" class="searchButton">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </form>
+                    <div class="notification">
+                        <a href="#"><i class="fa-solid fa-bell"></i></a>
+                    </div>
+                    <div class="profile-photo">
+                        <a href="#"><i class="fa-solid fa-user"></i></a>
+                    </div>
                 </div>
-            </div>
-        </header>
-        <main>
-            <section class="headline-container">
+            </header>
+            <section class="overlay-headline headline-container">
                 <div class="title-area">
                     <h2>PEAKY BLINDERS</h2>
                 </div>
@@ -50,7 +94,9 @@
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-regular fa-star"></i>
                         </div>
-                        <div class="rate"><p>8.8</p></div>
+                        <div class="rate">
+                            <p>8.8</p>
+                        </div>
                         <div class="imdb"><i class="fa-brands fa-imdb"></i></div>
                     </div>
                     <div class="warning-sign">
@@ -64,7 +110,10 @@
                     </div>
                 </div>
                 <div class="description">
-                    <p>Thomas Shelby and his brothers return to Birmingham after serving in the British Army during WWI. Shelby and his gang, the Peaky Blinders, control the city of Birmingham. However, Shelby's ambitions extend beyond Birmingham, as he plans to build on the business empire he's created, and dispatch anyone who gets in his way.</p>
+                    <p>Thomas Shelby and his brothers return to Birmingham after serving in the British Army during WWI.
+                        Shelby and his gang, the Peaky Blinders, control the city of Birmingham. However, Shelby's
+                        ambitions extend beyond Birmingham, as he plans to build on the business empire he's created,
+                        and dispatch anyone who gets in his way.</p>
                 </div>
                 <div class="info-tags">
                     <div class="starring">
@@ -87,210 +136,424 @@
                     </button>
                 </div>
             </section>
+        </div>
+        <main>
             <section class="gallery-container">
                 <div class="space popular-movies">
                     <div class="title-area">
                         <h2>Popular Movies</h2>
-                        <a href=""><h2>View All</h2></a>
+                        <a href="">
+                            <h2>View All</h2>
+                        </a>
                     </div>
-                    <div class="movie-row">
-                        <div class="movie-column">
-                            <h3>The Lord Of The Rings Series</h3>
-                            <div class="LOTR movie">
-                                <div class="play-button-area">
-                                    <i class="fa-solid fa-play"></i>
-                                    <button class="play-button">
-                                        <a href="">Play Now</a>
-                                    </button>
+                    <div class="slideshow-container">
+                        <a class="prev" onclick="plusDivs(-1, 0)">❮</a>
+                        <a class="next" onclick="plusDivs(1, 0)">❯</a>
+                        <div class="mySlides1 fade">
+                            <div class="movie-row">
+                                <div class="movie-column">
+                                    <h3>The Lord Of The Rings Series</h3>
+                                    <div class="LOTR movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Action, Adventure, Drama</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>13+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>3 Episodes</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="genre-warning-duration-area">
-                                <div class="genre">
-                                    <p>Action, Adventure, Drama</p>
+                                <div class="movie-column">
+                                    <h3>Godfather Series</h3>
+                                    <div class="Godfather movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Crime, Drama</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>18+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>3 Episodes</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="warning-sign">
-                                    <p>13+</p>
+                                <div class="movie-column">
+                                    <h3>Harry Potter Series</h3>
+                                    <div class="HP movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Adventure, Family, Fantasy</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>7+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>7 Episodes</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="duration">
-                                    <p>3 Episodes</p>
+                                <div class="movie-column">
+                                    <h3>Star Wars Series</h3>
+                                    <div class="StarWars movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Action, Adventure, Fantasy</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>7+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>9 Episodes</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="movie-column">
-                            <h3>Godfather Series</h3>
-                            <div class="Godfather movie">
-                                <div class="play-button-area">
-                                    <i class="fa-solid fa-play"></i>
-                                    <button class="play-button">
-                                        <a href="">Play Now</a>
-                                    </button>
+                        <div class="mySlides1 fade">
+                            <div class="movie-row">
+                                <div class="movie-column">
+                                    <h3>Two Popes</h3>
+                                    <div class="TwoPopes movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Biography, Comedy, Drama</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>13+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>2h 5min</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="genre-warning-duration-area">
-                                <div class="genre">
-                                    <p>Crime, Drama</p>
+                                <div class="movie-column">
+                                    <h3>Aile Arasında</h3>
+                                    <div class="AileArasinda movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Comedy</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>13+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>2h 4min</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="warning-sign">
-                                    <p>18+</p>
+                                <div class="movie-column">
+                                    <h3>Sprited Away</h3>
+                                    <div class="SpritedAway movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Animation, Adventure , Family</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>7+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>2h 5m</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="duration">
-                                    <p>3 Episodes</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="movie-column">
-                            <h3>Harry Potter Series</h3>
-                            <div class="HP movie">
-                                <div class="play-button-area">
-                                    <i class="fa-solid fa-play"></i>
-                                    <button class="play-button">
-                                        <a href="">Play Now</a>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="genre-warning-duration-area">
-                                <div class="genre">
-                                    <p>Adventure, Family, Fantasy</p>
-                                </div>
-                                <div class="warning-sign">
-                                    <p>7+</p>
-                                </div>
-                                <div class="duration">
-                                    <p>7 Episodes</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="movie-column">
-                            <h3>Star Wars Series</h3>
-                            <div class="StarWars movie">
-                                <div class="play-button-area">
-                                    <i class="fa-solid fa-play"></i>
-                                    <button class="play-button">
-                                        <a href="">Play Now</a>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="genre-warning-duration-area">
-                                <div class="genre">
-                                    <p>Action, Adventure, Fantasy</p>
-                                </div>
-                                <div class="warning-sign">
-                                    <p>7+</p>
-                                </div>
-                                <div class="duration">
-                                    <p>9 Episodes</p>
+                                <div class="movie-column">
+                                    <h3>Pirates of the Carabbien</h3>
+                                    <div class="POTC movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Action, Adventure, Fantasy</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>13+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>5 Episodes</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                </div>
+                </div>
                 <div class="space popular-movies recomended-movies">
                     <div class="title-area">
                         <h2>Recomended Movies</h2>
-                        <a href=""><h2>View All</h2></a>
+                        <a href="">
+                            <h2>View All</h2>
+                        </a>
                     </div>
-                    <div class="movie-row">
-                        <div class="movie-column">
-                            <h3>Two Popes</h3>
-                            <div class="TwoPopes movie">
-                                <div class="play-button-area">
-                                    <i class="fa-solid fa-play"></i>
-                                    <button class="play-button">
-                                        <a href="">Play Now</a>
-                                    </button>
+                    <div class="slideshow-container">
+                        <a class="prev" onclick="plusDivs(-1, 1)">❮</a>
+                        <a class="next" onclick="plusDivs(1, 1)">❯</a>
+                        <div class="mySlides2 fade">
+                            <div class="movie-row">
+                                <div class="movie-column">
+                                    <h3>The Lord Of The Rings Series</h3>
+                                    <div class="LOTR movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Action, Adventure, Drama</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>13+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>3 Episodes</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="genre-warning-duration-area">
-                                <div class="genre">
-                                    <p>Biography, Comedy, Drama</p>
+                                <div class="movie-column">
+                                    <h3>Godfather Series</h3>
+                                    <div class="Godfather movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Crime, Drama</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>18+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>3 Episodes</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="warning-sign">
-                                    <p>13+</p>
+                                <div class="movie-column">
+                                    <h3>Harry Potter Series</h3>
+                                    <div class="HP movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Adventure, Family, Fantasy</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>7+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>7 Episodes</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="duration">
-                                    <p>2h 5min</p>
+                                <div class="movie-column">
+                                    <h3>Star Wars Series</h3>
+                                    <div class="StarWars movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Action, Adventure, Fantasy</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>7+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>9 Episodes</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="movie-column">
-                            <h3>Aile Arasında</h3>
-                            <div class="AileArasinda movie">
-                                <div class="play-button-area">
-                                    <i class="fa-solid fa-play"></i>
-                                    <button class="play-button">
-                                        <a href="">Play Now</a>
-                                    </button>
+                        <div class="mySlides2 fade">
+                            <div class="movie-row">
+                                <div class="movie-column">
+                                    <h3>Two Popes</h3>
+                                    <div class="TwoPopes movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Biography, Comedy, Drama</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>13+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>2h 5min</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="genre-warning-duration-area">
-                                <div class="genre">
-                                    <p>Comedy</p>
+                                <div class="movie-column">
+                                    <h3>Aile Arasında</h3>
+                                    <div class="AileArasinda movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Comedy</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>13+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>2h 4min</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="warning-sign">
-                                    <p>13+</p>
+                                <div class="movie-column">
+                                    <h3>Sprited Away</h3>
+                                    <div class="SpritedAway movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Animation, Adventure , Family</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>7+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>2h 5m</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="duration">
-                                    <p>2h 4min</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="movie-column">
-                            <h3>Sprited Away</h3>
-                            <div class="SpritedAway movie">
-                                <div class="play-button-area">
-                                    <i class="fa-solid fa-play"></i>
-                                    <button class="play-button">
-                                        <a href="">Play Now</a>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="genre-warning-duration-area">
-                                <div class="genre">
-                                    <p>Animation, Adventure , Family</p>
-                                </div>
-                                <div class="warning-sign">
-                                    <p>7+</p>
-                                </div>
-                                <div class="duration">
-                                    <p>2h 5m</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="movie-column">
-                            <h3>Pirates of the Carabbien</h3>
-                            <div class="POTC movie">
-                                <div class="play-button-area">
-                                    <i class="fa-solid fa-play"></i>
-                                    <button class="play-button">
-                                        <a href="">Play Now</a>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="genre-warning-duration-area">
-                                <div class="genre">
-                                    <p>Action, Adventure, Fantasy</p>
-                                </div>
-                                <div class="warning-sign">
-                                    <p>13+</p>
-                                </div>
-                                <div class="duration">
-                                    <p>5 Episodes</p>
+                                <div class="movie-column">
+                                    <h3>Pirates of the Carabbien</h3>
+                                    <div class="POTC movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Action, Adventure, Fantasy</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>13+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>5 Episodes</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
             </section>
         </main>
         <footer class="footer-container">
             <div class="text-links-area">
                 <div class="links">
-                    <a href="#"><h4>Term of Use</h4></a>
-                    <a href="#"></a><h4>Rrivacy-Policy</h4></a>
-                    <a href="#"></a><h4>FAQ</h4></a>
-                    <a href="#"></a><h4>Watchlist</h4></a>
+                    <a href="#">
+                        <h4>Term of Use</h4>
+                    </a>
+                    <a href="#"></a>
+                    <h4>Rrivacy-Policy</h4></a>
+                    <a href="#"></a>
+                    <h4>FAQ</h4></a>
+                    <a href="#"></a>
+                    <h4>Watchlist</h4></a>
                 </div>
-                <p class="description"><b>Lorem ipsum dolar</b> sit amet, consectetur adipiscing elit. Nullam congue rhoncus nulla sit amet lobortis. Phasellus tempus tristique scelerisque. Duis congue ultricies arcu, sed accumsan ante condimentum id. Nullam congue metus at molestie suscipit. Integer ullamcorper tellus a consequat semper. Quisque blandit ultrices ipsum, eu sodales augue sagittis id. Phasellus aliquet tristique nulla, eu finibus magna maximus nec. Nullam malesuada ante a egestas lobortis.</p>
+                <p class="description"><b>Lorem ipsum dolar</b> sit amet, consectetur adipiscing elit. Nullam congue
+                    rhoncus nulla sit amet lobortis. Phasellus tempus tristique scelerisque. Duis congue ultricies arcu,
+                    sed accumsan ante condimentum id. Nullam congue metus at molestie suscipit. Integer ullamcorper
+                    tellus a consequat semper. Quisque blandit ultrices ipsum, eu sodales augue sagittis id. Phasellus
+                    aliquet tristique nulla, eu finibus magna maximus nec. Nullam malesuada ante a egestas lobortis.</p>
             </div>
             <div class="follow-us-area">
                 <h4>Follow us</h4>
@@ -308,6 +571,7 @@
                 </div>
             </div>
         </footer>
-     </section>
+    </section>
 </body>
+
 </html>
