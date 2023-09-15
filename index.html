@@ -12,15 +12,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins&display=swap" rel="stylesheet">
 
     <script>
-        const video = document.getElementById('myVideo');
         document.addEventListener('DOMContentLoaded', function () {
             showDivs(1, 0);
             showDivs(1, 1);
-            video.play().catch(function(error) {
-        // Otomatik oynatma başarısızsa, kullanıcı etkileşimi gerektirebilir.
-        // Bu nedenle, kullanıcıya bir düğme eklemek iyi bir fikir olabilir.
-        console.error('Video otomatik oynatma hatası:', error);
-            });
         });
         var slideIndex = [1, 1];
         var slideId = ["mySlides1", "mySlides2"]
@@ -37,6 +31,30 @@
             }
             x[slideIndex[no] - 1].style.display = "block";
         }
+        function showVideo(movieCard) {
+            var movie = movieCard.querySelector(".movie");
+            var myVideo = movieCard.querySelector("#myVideo2");
+
+            // movie-card'ı gizle
+            movie.style.display = "none";
+
+            // myVideo'yu göster
+            myVideo.style.display = "block";
+            myVideo.play();
+        }
+
+        function hideVideo(movieCard) {
+            var movie = movieCard.querySelector(".movie");
+            var myVideo = movieCard.querySelector("#myVideo2");
+
+            // movie-card'ı göster
+            movie.style.display = "block";
+            
+
+            // myVideo'yu gizle
+            myVideo.style.display = "none";
+            myVideo.pause();
+        }
 
     </script>
     <title>WITFLIX</title>
@@ -45,11 +63,7 @@
 <body>
     <section class="container">
         <div class="video-container">
-            <video autoplay id="myVideo" preload="auto" loop>
-                <source src="./img/PeakyBlinders.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <header class="overlay header-container">
+            <header class="header-container">
                 <div class="logo-area">
                     <a href="index.html">
                         <h1>WITFLIX</h1>
@@ -62,12 +76,7 @@
                     <h2><a href="#">Listem</a></h2>
                 </nav>
                 <div class="personal-area">
-                    <!--<form class="search-area" action="index.html">
-                        <input type="text" placeholder="Search.." name="search">
-                        <button type="submit"><i class="fa fa-search"></i></button>
-                    </form>-->
-                    
-                    <form class="search"> 
+                    <form class="search">
                         <input type="text" placeholder="Search" class="searchInput">
                         <button type="button" class="searchButton">
                             <i class="fa fa-search"></i>
@@ -81,7 +90,7 @@
                     </div>
                 </div>
             </header>
-            <section class="overlay-headline headline-container">
+            <section class="headline-container">
                 <div class="title-area">
                     <h2>PEAKY BLINDERS</h2>
                 </div>
@@ -136,6 +145,10 @@
                     </button>
                 </div>
             </section>
+            <video id="myVideo" autoplay muted loop preload="auto">
+                <source src="./img/PeakyBlinderstrailer.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
         <main>
             <section class="gallery-container">
@@ -151,7 +164,7 @@
                         <a class="next" onclick="plusDivs(1, 0)">❯</a>
                         <div class="mySlides1 fade">
                             <div class="movie-row">
-                                <div class="movie-column">
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
                                     <h3>The Lord Of The Rings Series</h3>
                                     <div class="LOTR movie">
                                         <div class="play-button-area">
@@ -161,6 +174,10 @@
                                             </button>
                                         </div>
                                     </div>
+                                    <video id="myVideo2" autoplay muted loop style="display: none;">
+                                        <source src="./img/LOTRtrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
                                     <div class="genre-warning-duration-area">
                                         <div class="genre">
                                             <p>Action, Adventure, Drama</p>
@@ -173,7 +190,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="movie-column">
+                    
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
                                     <h3>Godfather Series</h3>
                                     <div class="Godfather movie">
                                         <div class="play-button-area">
@@ -183,6 +201,10 @@
                                             </button>
                                         </div>
                                     </div>
+                                    <video id="myVideo2" autoplay muted loop style="display: none;">
+                                        <source src="./img/theGodFathertrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
                                     <div class="genre-warning-duration-area">
                                         <div class="genre">
                                             <p>Crime, Drama</p>
@@ -195,7 +217,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="movie-column">
+                                <div class="movie-card">
                                     <h3>Harry Potter Series</h3>
                                     <div class="HP movie">
                                         <div class="play-button-area">
@@ -217,7 +239,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="movie-column">
+                                <div class="movie-card">
                                     <h3>Star Wars Series</h3>
                                     <div class="StarWars movie">
                                         <div class="play-button-area">
@@ -243,7 +265,7 @@
                         </div>
                         <div class="mySlides1 fade">
                             <div class="movie-row">
-                                <div class="movie-column">
+                                <div class="movie-card">
                                     <h3>Two Popes</h3>
                                     <div class="TwoPopes movie">
                                         <div class="play-button-area">
@@ -265,7 +287,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="movie-column">
+                                <div class="movie-card">
                                     <h3>Aile Arasında</h3>
                                     <div class="AileArasinda movie">
                                         <div class="play-button-area">
@@ -287,7 +309,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="movie-column">
+                                <div class="movie-card">
                                     <h3>Sprited Away</h3>
                                     <div class="SpritedAway movie">
                                         <div class="play-button-area">
@@ -309,7 +331,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="movie-column">
+                                <div class="movie-card">
                                     <h3>Pirates of the Carabbien</h3>
                                     <div class="POTC movie">
                                         <div class="play-button-area">
@@ -349,7 +371,7 @@
                         <a class="next" onclick="plusDivs(1, 1)">❯</a>
                         <div class="mySlides2 fade">
                             <div class="movie-row">
-                                <div class="movie-column">
+                                <div class="movie-card">
                                     <h3>The Lord Of The Rings Series</h3>
                                     <div class="LOTR movie">
                                         <div class="play-button-area">
@@ -371,7 +393,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="movie-column">
+                                <div class="movie-card">
                                     <h3>Godfather Series</h3>
                                     <div class="Godfather movie">
                                         <div class="play-button-area">
@@ -393,7 +415,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="movie-column">
+                                <div class="movie-card">
                                     <h3>Harry Potter Series</h3>
                                     <div class="HP movie">
                                         <div class="play-button-area">
@@ -415,7 +437,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="movie-column">
+                                <div class="movie-card">
                                     <h3>Star Wars Series</h3>
                                     <div class="StarWars movie">
                                         <div class="play-button-area">
@@ -441,7 +463,7 @@
                         </div>
                         <div class="mySlides2 fade">
                             <div class="movie-row">
-                                <div class="movie-column">
+                                <div class="movie-card">
                                     <h3>Two Popes</h3>
                                     <div class="TwoPopes movie">
                                         <div class="play-button-area">
@@ -463,7 +485,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="movie-column">
+                                <div class="movie-card">
                                     <h3>Aile Arasında</h3>
                                     <div class="AileArasinda movie">
                                         <div class="play-button-area">
@@ -485,7 +507,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="movie-column">
+                                <div class="movie-card">
                                     <h3>Sprited Away</h3>
                                     <div class="SpritedAway movie">
                                         <div class="play-button-area">
@@ -507,7 +529,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="movie-column">
+                                <div class="movie-card">
                                     <h3>Pirates of the Carabbien</h3>
                                     <div class="POTC movie">
                                         <div class="play-button-area">

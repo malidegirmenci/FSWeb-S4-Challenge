@@ -1,4 +1,4 @@
-@import url(./css/reset.css);
+
 * {
     box-sizing: border-box;
 }
@@ -9,10 +9,7 @@ body{
     margin:0;
     padding: 0;
 }
-video{
-    width:100%;
-    
-}
+
 section{
     margin-bottom: 1rem;
 }
@@ -38,31 +35,33 @@ p {
     font-family: 'Poppins', sans-serif;
     color:rgb(221, 221, 221);
 }
-
-
+.space{
+    margin-top: 2rem;
+}
 /* Container */
 .container{
     display: flex;
     flex-direction: column;
-    background-color: black;
 }
 /*Video Container */
 .video-container {
     position: relative;
-}
-.video-container {
-    width: 100vw;
-    height: 50vw;
-}
-/* Header Container */
-.overlay {
-    position: absolute;
-    top: 0px;
-    left: 0;
-    width: 100%;
-    height: 10%;
+    box-shadow: inset 0 0 3em 4em rgb(0, 0, 0);
 }
 
+
+
+#myVideo{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    object-fit: cover;
+}
+
+/* Header Container */
 .header-container{
     display: flex;
     flex-direction: row;
@@ -80,7 +79,6 @@ p {
     font-weight: 400;
     line-height: 1;
     text-transform: none;
-    transform: translateZ(100);
 }
 
 .title-area{
@@ -111,7 +109,7 @@ p {
     color:#fff;
     padding:10px;
     border-radius: 4px;
-    border:1px solid #fff;
+    border:0.5px solid #fff;
 }
 .search :is(input,button){
     background: transparent;
@@ -133,9 +131,11 @@ p {
 }
 .searchButton:hover{
     color:#e3e3e3;
+    
 }
 .search:focus-within input{
     width:200px;
+    
 }
 ::placeholder {
     font:inherit;
@@ -143,20 +143,9 @@ p {
 }
 
 /* Headline Container*/
-.overlay-headline {
-    position: absolute;
-    top: 200px;
-    left: 0;
-    width: 100%;
-    height: 60%;
-}
-
 .headline-container{
     display: flex;
     flex-direction: column;
-    /*background-image: url(https://images.alphacoders.com/125/1254595.jpg);*/
-    background-size: cover;
-    background-repeat: no-repeat;
     align-items: flex-start;
     font-family:'Bebas Neue', sans-serif;
     padding-left: 5rem;
@@ -191,7 +180,6 @@ p {
     color:rgb(221, 221, 221);
 }
 .warning-sign p{
-    border : 1px solid rgb(20,20,20);
     font-size: 1.25rem;
 }
 .description{
@@ -346,13 +334,53 @@ p {
     margin:1rem 1rem;
     flex-wrap: wrap;
 }
-.movie-column{
+.movie-card{
     display: flex;
     flex-direction: column;
     gap:0.3rem;
     width: 25%;
     height: 15rem;
 }
+
+
+.movie-card h3{
+    font-size: 1.5rem;
+    color:rgb(252, 252, 252);
+    margin-bottom: 0;
+    margin-top: 0;
+    margin-left: 2rem;
+
+}
+.movie:hover > #myVideo2{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#myVideo2{
+    display: none;
+    margin-left: 1rem;
+    flex-grow: 1;
+    object-fit: cover;
+    border-radius: 10px;
+    border:2px solid rgb(26, 26, 26);
+}
+
+.movie-card .genre-warning-duration-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    gap:0.5rem;
+    -webkit-text-stroke: 0.1px rgb(255, 255, 255);
+}
+.movie-card .genre-warning-duration-area p{
+    margin:0;
+    margin-right:5px;
+    font-size: 0.75rem;
+}
+
 .movie{
     display: flex;
     flex-direction: column;
@@ -365,34 +393,9 @@ p {
     background-size: cover;
     background-repeat: no-repeat;
     flex-grow: 1;
+    transition: transform 0.3s ease; 
 }
-.movie-column h3{
-    font-size: 1.5rem;
-    color:rgb(252, 252, 252);
-    margin-bottom: 0;
-    margin-top: 0;
-    margin-left: 2rem;
-}
-.movie p {
-    -webkit-text-stroke: 0.1px rgb(235, 229, 229);
-    color:rgb(20, 20, 20);
-}
-.movie-column .genre-warning-duration-area {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    text-align: center;
-    gap:0.5rem;
-    -webkit-text-stroke: 0.1px rgb(255, 255, 255);
-}
-.movie-column .genre-warning-duration-area p{
-    margin:0;
-    margin-right:5px;
-    font-size: 0.75rem;
-}.space{
-    margin-top: 2rem;
-}
+
 .movie .play-button-area{
     margin-left:1rem;
     margin-top: 0;
