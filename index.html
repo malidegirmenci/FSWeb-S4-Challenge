@@ -10,53 +10,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins&display=swap" rel="stylesheet">
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            showDivs(1, 0);
-            showDivs(1, 1);
-        });
-        var slideIndex = [1, 1];
-        var slideId = ["mySlides1", "mySlides2"]
-        function plusDivs(n, no) {
-            showDivs(slideIndex[no] += n, no);
-        }
-        function showDivs(n, no) {
-            var i;
-            var x = document.getElementsByClassName(slideId[no]);
-            if (n > x.length) { slideIndex[no] = 1 }
-            if (n < 1) { slideIndex[no] = x.length }
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            x[slideIndex[no] - 1].style.display = "block";
-        }
-        function showVideo(movieCard) {
-            var movie = movieCard.querySelector(".movie");
-            var myVideo = movieCard.querySelector("#myVideo2");
-
-            // movie-card'ı gizle
-            movie.style.display = "none";
-
-            // myVideo'yu göster
-            myVideo.style.display = "block";
-            myVideo.play();
-        }
-
-        function hideVideo(movieCard) {
-            var movie = movieCard.querySelector(".movie");
-            var myVideo = movieCard.querySelector("#myVideo2");
-
-            // movie-card'ı göster
-            movie.style.display = "block";
-            
-
-            // myVideo'yu gizle
-            myVideo.style.display = "none";
-            myVideo.pause();
-        }
-
-    </script>
     <title>WITFLIX</title>
 </head>
 
@@ -70,10 +23,10 @@
                     </a>
                 </div>
                 <nav class="title-area">
-                    <h2><a href="index.html">Ana Sayfa</a></h2>
-                    <h2><a href="#">Diziler</a></h2>
-                    <h2><a href="#">Filmler</a></h2>
-                    <h2><a href="#">Listem</a></h2>
+                    <h2><a href="index.html">Home</a></h2>
+                    <h2><a href="#">TV Shows</a></h2>
+                    <h2><a href="#">Movies</a></h2>
+                    <h2><a href="#">My List</a></h2>
                 </nav>
                 <div class="personal-area">
                     <form class="search">
@@ -138,14 +91,21 @@
                         <p>Mafia, Gun</p>
                     </div>
                 </div>
-                <div class="play-button-area">
-                    <i class="fa-solid fa-play"></i>
-                    <button class="play-button">
-                        <a href="">Play Now</a>
-                    </button>
+                <div class="button-area">
+                    <div class="play-button-area">
+                        <i class="fa-solid fa-play"></i>
+                        <button class="play-button">
+                            <a href="">Play Now</a>
+                        </button>
+                        
+                    </div>
+                    <div class="volume-button-area">
+                        <button id="muted-button"><i class="fa-solid fa-volume-xmark"></i></button>
+                        <button id="unmuted-button"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
                 </div>
             </section>
-            <video id="myVideo" autoplay muted loop preload="auto">
+            <video id="headlineMovieteaser" autoplay muted loop preload="auto">
                 <source src="./img/PeakyBlinderstrailer.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -162,7 +122,7 @@
                     <div class="slideshow-container">
                         <a class="prev" onclick="plusDivs(-1, 0)">❮</a>
                         <a class="next" onclick="plusDivs(1, 0)">❯</a>
-                        <div class="mySlides1 fade">
+                        <div class="popularMoviesSlides fade">
                             <div class="movie-row">
                                 <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
                                     <h3>The Lord Of The Rings Series</h3>
@@ -174,7 +134,7 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <video id="myVideo2" autoplay muted loop style="display: none;">
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
                                         <source src="./img/LOTRtrailer.mp4" type="video/mp4">
                                         Your browser does not support the video tag.
                                     </video>
@@ -190,7 +150,6 @@
                                         </div>
                                     </div>
                                 </div>
-                    
                                 <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
                                     <h3>Godfather Series</h3>
                                     <div class="Godfather movie">
@@ -201,7 +160,7 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <video id="myVideo2" autoplay muted loop style="display: none;">
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
                                         <source src="./img/theGodFathertrailer.mp4" type="video/mp4">
                                         Your browser does not support the video tag.
                                     </video>
@@ -217,7 +176,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="movie-card">
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
                                     <h3>Harry Potter Series</h3>
                                     <div class="HP movie">
                                         <div class="play-button-area">
@@ -227,6 +186,10 @@
                                             </button>
                                         </div>
                                     </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/HPtrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
                                     <div class="genre-warning-duration-area">
                                         <div class="genre">
                                             <p>Adventure, Family, Fantasy</p>
@@ -239,8 +202,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="movie-card">
-                                    <h3>Star Wars Series</h3>
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
+                                    <h3>StarWars Series</h3>
                                     <div class="StarWars movie">
                                         <div class="play-button-area">
                                             <i class="fa-solid fa-play"></i>
@@ -249,23 +212,27 @@
                                             </button>
                                         </div>
                                     </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/StarWarstrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
                                     <div class="genre-warning-duration-area">
                                         <div class="genre">
-                                            <p>Action, Adventure, Fantasy</p>
+                                            <p>Adventure, Family, Fantasy</p>
                                         </div>
                                         <div class="warning-sign">
                                             <p>7+</p>
                                         </div>
                                         <div class="duration">
-                                            <p>9 Episodes</p>
+                                            <p>7 Episodes</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="mySlides1 fade">
+                        <div class="popularMoviesSlides fade">
                             <div class="movie-row">
-                                <div class="movie-card">
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
                                     <h3>Two Popes</h3>
                                     <div class="TwoPopes movie">
                                         <div class="play-button-area">
@@ -275,6 +242,10 @@
                                             </button>
                                         </div>
                                     </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/TwoPopestrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
                                     <div class="genre-warning-duration-area">
                                         <div class="genre">
                                             <p>Biography, Comedy, Drama</p>
@@ -287,7 +258,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="movie-card">
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
                                     <h3>Aile Arasında</h3>
                                     <div class="AileArasinda movie">
                                         <div class="play-button-area">
@@ -297,6 +268,10 @@
                                             </button>
                                         </div>
                                     </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/AileArasindatrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
                                     <div class="genre-warning-duration-area">
                                         <div class="genre">
                                             <p>Comedy</p>
@@ -309,7 +284,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="movie-card">
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
                                     <h3>Sprited Away</h3>
                                     <div class="SpritedAway movie">
                                         <div class="play-button-area">
@@ -319,6 +294,10 @@
                                             </button>
                                         </div>
                                     </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/SpritedAwaytrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
                                     <div class="genre-warning-duration-area">
                                         <div class="genre">
                                             <p>Animation, Adventure , Family</p>
@@ -331,7 +310,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="movie-card">
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
                                     <h3>Pirates of the Carabbien</h3>
                                     <div class="POTC movie">
                                         <div class="play-button-area">
@@ -341,6 +320,10 @@
                                             </button>
                                         </div>
                                     </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/POTCtrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
                                     <div class="genre-warning-duration-area">
                                         <div class="genre">
                                             <p>Action, Adventure, Fantasy</p>
@@ -357,8 +340,6 @@
                         </div>
                     </div>
                 </div>
-                </div>
-                </div>
                 <div class="space popular-movies recomended-movies">
                     <div class="title-area">
                         <h2>Recomended Movies</h2>
@@ -369,9 +350,9 @@
                     <div class="slideshow-container">
                         <a class="prev" onclick="plusDivs(-1, 1)">❮</a>
                         <a class="next" onclick="plusDivs(1, 1)">❯</a>
-                        <div class="mySlides2 fade">
+                        <div class="recomendedMoviesSlides fade">
                             <div class="movie-row">
-                                <div class="movie-card">
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
                                     <h3>The Lord Of The Rings Series</h3>
                                     <div class="LOTR movie">
                                         <div class="play-button-area">
@@ -381,6 +362,10 @@
                                             </button>
                                         </div>
                                     </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/LOTRtrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
                                     <div class="genre-warning-duration-area">
                                         <div class="genre">
                                             <p>Action, Adventure, Drama</p>
@@ -393,7 +378,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="movie-card">
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
                                     <h3>Godfather Series</h3>
                                     <div class="Godfather movie">
                                         <div class="play-button-area">
@@ -403,6 +388,10 @@
                                             </button>
                                         </div>
                                     </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/theGodFathertrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
                                     <div class="genre-warning-duration-area">
                                         <div class="genre">
                                             <p>Crime, Drama</p>
@@ -415,7 +404,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="movie-card">
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
                                     <h3>Harry Potter Series</h3>
                                     <div class="HP movie">
                                         <div class="play-button-area">
@@ -425,6 +414,10 @@
                                             </button>
                                         </div>
                                     </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/HPtrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
                                     <div class="genre-warning-duration-area">
                                         <div class="genre">
                                             <p>Adventure, Family, Fantasy</p>
@@ -437,8 +430,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="movie-card">
-                                    <h3>Star Wars Series</h3>
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
+                                    <h3>StarWars Series</h3>
                                     <div class="StarWars movie">
                                         <div class="play-button-area">
                                             <i class="fa-solid fa-play"></i>
@@ -447,23 +440,27 @@
                                             </button>
                                         </div>
                                     </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/StarWarstrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
                                     <div class="genre-warning-duration-area">
                                         <div class="genre">
-                                            <p>Action, Adventure, Fantasy</p>
+                                            <p>Adventure, Family, Fantasy</p>
                                         </div>
                                         <div class="warning-sign">
                                             <p>7+</p>
                                         </div>
                                         <div class="duration">
-                                            <p>9 Episodes</p>
+                                            <p>7 Episodes</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="mySlides2 fade">
+                        <div class="recomendedMoviesSlides fade">
                             <div class="movie-row">
-                                <div class="movie-card">
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
                                     <h3>Two Popes</h3>
                                     <div class="TwoPopes movie">
                                         <div class="play-button-area">
@@ -473,6 +470,10 @@
                                             </button>
                                         </div>
                                     </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/TwoPopestrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
                                     <div class="genre-warning-duration-area">
                                         <div class="genre">
                                             <p>Biography, Comedy, Drama</p>
@@ -485,7 +486,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="movie-card">
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
                                     <h3>Aile Arasında</h3>
                                     <div class="AileArasinda movie">
                                         <div class="play-button-area">
@@ -495,6 +496,10 @@
                                             </button>
                                         </div>
                                     </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/AileArasindatrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
                                     <div class="genre-warning-duration-area">
                                         <div class="genre">
                                             <p>Comedy</p>
@@ -507,7 +512,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="movie-card">
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
                                     <h3>Sprited Away</h3>
                                     <div class="SpritedAway movie">
                                         <div class="play-button-area">
@@ -517,6 +522,10 @@
                                             </button>
                                         </div>
                                     </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/SpritedAwaytrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
                                     <div class="genre-warning-duration-area">
                                         <div class="genre">
                                             <p>Animation, Adventure , Family</p>
@@ -529,7 +538,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="movie-card">
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
                                     <h3>Pirates of the Carabbien</h3>
                                     <div class="POTC movie">
                                         <div class="play-button-area">
@@ -539,6 +548,10 @@
                                             </button>
                                         </div>
                                     </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/POTCtrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
                                     <div class="genre-warning-duration-area">
                                         <div class="genre">
                                             <p>Action, Adventure, Fantasy</p>
@@ -555,6 +568,461 @@
                         </div>
                     </div>
                 </div>
+                <div class="space popular-movies trending-movies">
+                    <div class="title-area">
+                        <h2>Trending Movies</h2>
+                        <a href="">
+                            <h2>View All</h2>
+                        </a>
+                    </div>
+                    <div class="slideshow-container">
+                        <a class="prev" onclick="plusDivs(-1, 2)">❮</a>
+                        <a class="next" onclick="plusDivs(1, 2)">❯</a>
+                        <div class="trendingMoviesSlides fade">
+                            <div class="movie-row">
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
+                                    <h3>The Lord Of The Rings Series</h3>
+                                    <div class="LOTR movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/LOTRtrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Action, Adventure, Drama</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>13+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>3 Episodes</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
+                                    <h3>Godfather Series</h3>
+                                    <div class="Godfather movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/theGodFathertrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Crime, Drama</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>18+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>3 Episodes</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
+                                    <h3>Harry Potter Series</h3>
+                                    <div class="HP movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/HPtrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Adventure, Family, Fantasy</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>7+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>7 Episodes</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
+                                    <h3>StarWars Series</h3>
+                                    <div class="StarWars movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/StarWarstrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Adventure, Family, Fantasy</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>7+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>7 Episodes</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="trendingMoviesSlides fade">
+                            <div class="movie-row">
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
+                                    <h3>Two Popes</h3>
+                                    <div class="TwoPopes movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/TwoPopestrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Biography, Comedy, Drama</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>13+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>2h 5min</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
+                                    <h3>Aile Arasında</h3>
+                                    <div class="AileArasinda movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/AileArasindatrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Comedy</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>13+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>2h 4min</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
+                                    <h3>Sprited Away</h3>
+                                    <div class="SpritedAway movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/SpritedAwaytrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Animation, Adventure , Family</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>7+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>2h 5m</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
+                                    <h3>Pirates of the Carabbien</h3>
+                                    <div class="POTC movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/POTCtrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Action, Adventure, Fantasy</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>13+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>5 Episodes</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space popular-movies awardWinning-movies">
+                    <div class="title-area">
+                        <h2>Award-Winning Movies</h2>
+                        <a href="">
+                            <h2>View All</h2>
+                        </a>
+                    </div>
+                    <div class="slideshow-container">
+                        <a class="prev" onclick="plusDivs(-1, 3)">❮</a>
+                        <a class="next" onclick="plusDivs(1, 3)">❯</a>
+                        <div class="awardWinningMoviesSlides fade">
+                            <div class="movie-row">
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
+                                    <h3>The Lord Of The Rings Series</h3>
+                                    <div class="LOTR movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/LOTRtrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Action, Adventure, Drama</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>13+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>3 Episodes</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
+                                    <h3>Godfather Series</h3>
+                                    <div class="Godfather movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/theGodFathertrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Crime, Drama</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>18+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>3 Episodes</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
+                                    <h3>Harry Potter Series</h3>
+                                    <div class="HP movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/HPtrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Adventure, Family, Fantasy</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>7+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>7 Episodes</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
+                                    <h3>StarWars Series</h3>
+                                    <div class="StarWars movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/StarWarstrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Adventure, Family, Fantasy</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>7+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>7 Episodes</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="awardWinningMoviesSlides fade">
+                            <div class="movie-row">
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
+                                    <h3>Two Popes</h3>
+                                    <div class="TwoPopes movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/TwoPopestrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Biography, Comedy, Drama</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>13+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>2h 5min</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
+                                    <h3>Aile Arasında</h3>
+                                    <div class="AileArasinda movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/AileArasindatrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Comedy</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>13+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>2h 4min</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
+                                    <h3>Sprited Away</h3>
+                                    <div class="SpritedAway movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/SpritedAwaytrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Animation, Adventure , Family</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>7+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>2h 5m</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="movie-card" onmouseover="showVideo(this)" onmouseout="hideVideo(this)">
+                                    <h3>Pirates of the Carabbien</h3>
+                                    <div class="POTC movie">
+                                        <div class="play-button-area">
+                                            <i class="fa-solid fa-play"></i>
+                                            <button class="play-button">
+                                                <a href="">Play Now</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <video id="movieTeaser" autoplay muted loop style="display: none;">
+                                        <source src="./img/POTCtrailer.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="genre-warning-duration-area">
+                                        <div class="genre">
+                                            <p>Action, Adventure, Fantasy</p>
+                                        </div>
+                                        <div class="warning-sign">
+                                            <p>13+</p>
+                                        </div>
+                                        <div class="duration">
+                                            <p>5 Episodes</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
@@ -594,6 +1062,6 @@
             </div>
         </footer>
     </section>
+    <script src="js/index.js"></script>
 </body>
-
 </html>
